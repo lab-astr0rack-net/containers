@@ -102,7 +102,7 @@ jobs:
           COSIGN_EXPERIMENTAL: "true"
         # This step uses the identity token to provision an ephemeral certificate
         # against the sigstore community Fulcio instance.
-        run: echo "${{ steps.meta-ansible.outputs.tags }}" | xargs -I {} cosign sign {}@${{ steps.build-and-push.outputs.digest }}
+        run: echo "${{ steps.meta-ansible.outputs.tags }}" | xargs -I {} cosign sign {}@${{ steps.build-and-push-ansible.outputs.digest }}
 
       # Extract metadata (tags, labels) for Docker
       # https://github.com/docker/metadata-action
@@ -128,7 +128,7 @@ jobs:
           tags: |
             ghcr.io/lab-astr0rack-net/terraform:latest
             ${{ steps.meta-terraform.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          labels: ${{ steps.meta-terraform.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
           platforms: linux/arm/v7,linux/arm64/v8,linux/amd64
@@ -145,4 +145,4 @@ jobs:
           COSIGN_EXPERIMENTAL: "true"
         # This step uses the identity token to provision an ephemeral certificate
         # against the sigstore community Fulcio instance.
-        run: echo "${{ steps.meta-terraform.outputs.tags }}" | xargs -I {} cosign sign {}@${{ steps.build-and-push.outputs.digest }}
+        run: echo "${{ steps.meta-terraform.outputs.tags }}" | xargs -I {} cosign sign {}@${{ steps.build-and-push-terraform.outputs.digest }}
