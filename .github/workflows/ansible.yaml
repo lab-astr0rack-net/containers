@@ -31,7 +31,9 @@ jobs:
       # This is used to complete the identity challenge
       # with sigstore/fulcio when running outside of PRs.
       id-token: write
-
+    defaults:
+      run:
+        working-directory: ./ansible
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -79,7 +81,6 @@ jobs:
       - name: Build and push Docker image
         id: build-and-push
         uses: docker/build-push-action@v4.1.1
-        working-directory: ansible
         with:
           context: .
           push: ${{ github.event_name != 'pull_request' }}
