@@ -23,7 +23,7 @@ env:
 
 jobs:
   build-push:
-    stategy:
+    strategy:
       matrix:
         container: [ansible, terraform]
 
