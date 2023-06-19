@@ -123,7 +123,7 @@ jobs:
         id: build-and-push-terraform
         uses: docker/build-push-action@v4.1.1
         with:
-          context: ansible/
+          context: terraform/
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
             ghcr.io/lab-astr0rack-net/terraform:latest
