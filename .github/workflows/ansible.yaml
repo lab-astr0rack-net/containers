@@ -18,7 +18,7 @@ on:
 env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
-  IMAGE_NAME: lab-astr0rack-net/anisble
+  IMAGE_NAME: lab-astr0rack-net/ansible
 
 
 jobs:
