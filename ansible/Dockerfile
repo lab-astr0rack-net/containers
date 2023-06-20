@@ -4,4 +4,4 @@ RUN apt update && DEBIAN_FRONTEND=noninteractive apt install unzip iptables ipro
 
 COPY requirements.yml /
 
-RUN ansible-galaxy install -r /requirements.yml --roles-path /etc/ansible/roles && rm /requirements.yml
+RUN ansible-galaxy collection install -p /usr/share/ansible/collections -r /requirements.yml  && rm /requirements.yml
